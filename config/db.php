@@ -1,16 +1,20 @@
 <?php
-// Configuración de conexión a la base de datos revista_digital
-// Ajusta estos valores solo si tu instalación de MySQL/XAMPP usa
-// un usuario, contraseña o host distintos.
+// ============================================================
+// Configuración de conexión a la base de datos (Railway)
+// Lee las variables de entorno. Si no existen, usa valores por defecto.
+// ============================================================
 
-$DB_HOST = '127.0.0.1';
-$DB_NAME = 'revista_digital';
-$DB_USER = 'root';
-$DB_PASS = '';          // en XAMPP por defecto no hay contraseña
+// Railway a veces usa nombres como MYSQLHOST, MYSQLPORT, etc.
+// Usamos getenv() para leer ambos formatos por seguridad.
+$DB_HOST = getenv('DB_HOST') ?: getenv('MYSQLHOST') ?: '127.0.0.1';
+$DB_PORT = getenv('DB_PORT') ?: getenv('MYSQLPORT') ?: '3306';
+$DB_NAME = getenv('DB_DATABASE') ?: getenv('MYSQLDATABASE') ?: 'railway';
+$DB_USER = getenv('DB_USERNAME') ?: getenv('MYSQLUSER') ?: 'root';
+$DB_PASS = getenv('DB_PASSWORD') ?: getenv('MYSQLPASSWORD') ?: '';
 
 try {
     $pdo = new PDO(
-        "mysql:host={$DB_HOST};dbname={$DB_NAME};charset=utf8mb4",
+        "mysql:host={$DB_HOST};port={$DB_PORT};dbname={$DB_NAME};charset=utf8mb4",
         $DB_USER,
         $DB_PASS,
         [
@@ -19,7 +23,8 @@ try {
         ]
     );
 } catch (PDOException $e) {
-    die('No se pudo conectar a la base de datos "revista_digital". '
-        . 'Verifica que MySQL esté iniciado en XAMPP y que hayas importado sql/revista_digital.sql. '
-        . 'Detalle técnico: ' . $e->getMessage());
+    die("No se pudo conectar a la base de datos. "
+        . "Verifica que las variables de entorno en Railway estén correctas. "
+        . "Detalle técnico: " . $e->getMessage());
 }
+?>

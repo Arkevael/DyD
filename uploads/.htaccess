@@ -1,0 +1,4 @@
+# Permite servir imágenes y PDFs, pero nunca ejecutar PHP dentro de uploads/
+<FilesMatch "\.php$">
+  Require all denied
+</FilesMatch>

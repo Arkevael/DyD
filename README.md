@@ -1,5 +1,5 @@
 
- DyD — Panel administrativo + sitio público
+[ DyD — Panel administrativo + sitio público
  README técnico del proyecto (léeme antes de tocar el código)
 
 
@@ -380,4 +380,4 @@ y contraseña que da el hosting (no localhost).
     abierta a que alguien inyecte JavaScript malicioso (XSS).
   - Los archivos subidos (uploads/) tienen que mantener el
     .htaccess que impide ejecutar PHP ahí adentro. No borrarlo.
-================================================================
+================================================================](https://github.com/Arkevael/DyD)

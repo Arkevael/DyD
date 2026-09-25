@@ -1,7 +1,7 @@
-================================================================
+
  DyD — Panel administrativo + sitio público
  README técnico del proyecto (léeme antes de tocar el código)
-================================================================
+
 
 Este documento explica CÓMO ESTÁ ARMADO todo el proyecto, para que
 cualquiera que quiera agregar o cambiar algo entienda rápido dónde
